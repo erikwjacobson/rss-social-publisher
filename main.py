@@ -3,7 +3,7 @@ import feedparser
 import requests
 import numpy as np
 import pandas as pd
-import BlogPost
+from BlogPost import BlogPost
 
 def main():
     # Link to RSS Feed

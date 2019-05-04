@@ -4,7 +4,7 @@ class BlogPost:
         self._id = entry['id']
         self._title = entry['title']
         self._link = entry['link']
-        self._content = entry['summary']
+        self._content = entry['content'][0]['value']
         self._published = entry['published']
         self._medium = False
         self._instagram = False
