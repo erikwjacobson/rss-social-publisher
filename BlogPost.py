@@ -1,3 +1,4 @@
+import pandas as pd
 class BlogPost:
     def __init__(self, entry):
         self._id = entry['id']
