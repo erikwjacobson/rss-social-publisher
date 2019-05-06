@@ -8,6 +8,7 @@ class BlogPost:
         self._published = entry['published']
         self._medium = False
         self._instagram = False
+        self._data = pd.DataFrame([[self._id,self._title,self._link, self._content, self._published, self._medium, self._instagram]], columns=['id','title','link','content','published','medium','instagram'])
     
     @property
     def id(self):
@@ -39,9 +40,7 @@ class BlogPost:
     
     @property
     def data(self):
-        data = [self._id,self._title,self._link, self._content, self._published, self._medium, self._instagram]
-        df = pd.DataFrame([data], columns=['id','title','link','content','published','medium','instagram'])
-        return df
+        return self._data
 
     @medium.setter
     def medium(self, n):
@@ -50,3 +49,6 @@ class BlogPost:
     @instagram.setter
     def instagram(self, n):
         self._instagram = n
+
+    def log(self):
+        self._data.to_csv('logs.csv', mode='a', header=False)

@@ -25,10 +25,12 @@ def main():
             success = postToMedium(creds, post)
             if(success):
                 post.medium = True
-                logPost(post) # Log the post
-                print('Successfully posted "{}" to Medium'.format(post.title))
+                post.log() # Log the post
+                print('Successfully posted "{}" to Medium.'.format(post.title))
             else:
                 print('Something went wrong with the request!')
+        else: 
+            print('All posts are already on Medium!')
     print('Done')
 
 ## Check if posted
@@ -40,11 +42,6 @@ def posted(post, where):
     else:
         posted = postLog.iloc[0][where]
     return posted
-
-## Log the post to a csv file
-def logPost(post):
-    post.data.to_csv('logs.csv', mode='a', header=False)
-    print('Successfully logged post.')
 
 ## Post to medium
 def postToMedium(creds, post):
