@@ -41,7 +41,7 @@ class BlogPost:
     @property
     def data(self):
         return self._data
-
+    
     @medium.setter
     def medium(self, n):
         self._medium = n
@@ -52,3 +52,12 @@ class BlogPost:
 
     def log(self):
         self._data.to_csv('logs.csv', mode='a', header=False)
+
+    def is_posted(self, to='medium'):
+        logs = pd.read_csv('logs.csv')
+        postLog = logs[logs['id'] == self._id]
+        if(postLog.empty):
+            posted = False
+        else:
+            posted = postLog.iloc[0][to]
+        return posted

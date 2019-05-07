@@ -20,7 +20,7 @@ def main():
         post = BlogPost(post) # Instantiate
         
         # If the post has not been posted to medium yet
-        if(not posted(post, 'medium')):
+        if(not post.is_posted(to='medium')):
             # Post to medium
             success = postToMedium(creds, post)
             if(success):
@@ -32,16 +32,6 @@ def main():
         else: 
             print('All posts are already on Medium!')
     print('Done')
-
-## Check if posted
-def posted(post, where):
-    logs = pd.read_csv('logs.csv')
-    postLog = logs[logs['id'] == post.id]
-    if(postLog.empty):
-        posted = False
-    else:
-        posted = postLog.iloc[0][where]
-    return posted
 
 ## Post to medium
 def postToMedium(creds, post):
