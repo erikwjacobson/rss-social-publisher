@@ -40,6 +40,7 @@ def postToMedium(creds, post):
     data = ({
         'title': post.title,
         'contentFormat': "html",
+        "publishStatus": "draft", # Change to 'public', or leave out if you want to automatically publish live articles
         "content": post.content
     })
     headers = ({
